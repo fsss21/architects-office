@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:server": "pkg server.cjs --out-path dist --targets node18-win-x64,node18-macos-x64 --assets dist",
-    "build:server:win": "pkg server.cjs --out-path dist --targets node18-win-x64 --assets dist",
-    "build:server:mac": "pkg server.cjs --out-path dist --targets node18-macos-x64 --assets dist",
+    "build:server": "pkg server.cjs --output dist/launch --targets node18-win-x64,node18-macos-x64 --assets dist",
+    "build:server:win": "pkg server.cjs --output dist/launch --targets node18-win-x64 --assets dist",
+    "build:server:mac": "pkg server.cjs --output dist/launch --targets node18-macos-x64 --assets dist",
     "build:all": "npm run build && npm run build:server",
     "build:all:win": "npm run build && npm run build:server:win",
     "build:all:mac": "npm run build && npm run build:server:mac",
