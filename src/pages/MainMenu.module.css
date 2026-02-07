@@ -1,0 +1,337 @@
+/* ========== Main content area ========== */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 0;
+  gap: 1rem;
+}
+
+.title {
+  font-family: var(--font-title);
+  position: absolute;
+  top: 7%;
+  left: 1%;
+  width: 400px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #3d3529;
+  margin: 0 0 0.5rem;
+}
+
+.columns {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 0;
+  width: 100%;
+  max-width: 1400px;  
+  
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+  padding: 10px; 
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px;
+}
+
+.blockText{
+  width: 100%;
+  max-width: 500px;
+}
+
+.textColumn p {
+  font-family: var(--font-text);
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a4035;
+}
+
+.textColumn p:last-child {
+  margin-bottom: 0;
+}
+
+.scrollColumn {
+  width: 400px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 22%;
+}
+
+.scrollPlaceholder {
+  width: 100%;
+  min-height: 360px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b7355;
+  font-size: 0.9rem;
+  position: relative;
+  margin: 0 auto;
+}
+
+.photoContainer {
+  width: 100%;
+  min-height: 360px;
+  border-radius: 8px;
+  border: 2px solid #8b7355;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(232, 223, 208, 0.3);
+}
+
+.photoImage {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.photoNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3d3529;
+}
+
+.photoNav button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #3d3529;
+  background: transparent;
+  border: 1px solid #8b7355;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.photoNav button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.photoNav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scrollNavText{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3d3529;
+}
+
+.scrollNavText button {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #3d3529;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.scrollNav {
+  position: absolute;
+  bottom: 0;
+  right: 12%;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3d3529;
+}
+
+.scrollNavBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  gap: 20px;
+}
+
+.buttonsNav{
+  display: flex;
+  gap: 15px;
+}
+
+.scrollNavBtn button {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #F5DDBB;
+  background: #554935;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.scrollNav button:hover {
+  opacity: 0.9;
+}
+
+.scrollNav button:focus {
+  outline-offset: 1px;
+}
+
+.fullscreenIcon {
+  margin-left: 0.5rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #3d3529;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.fullscreenIcon:hover {
+  opacity: 0.9;
+}
+
+/* ========== Полноэкранный просмотр фото ========== */
+.photoFullscreenOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+}
+
+.photoFullscreenClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.photoFullscreenClose:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.photoFullscreenContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+.photoFullscreenImage {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.photoFullscreenNav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.photoFullscreenNav button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.photoFullscreenNav button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.photoFullscreenNav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .columns {
+    flex-direction: column;
+  }
+
+  .scrollColumn {
+    width: 100%;
+    min-height: 280px;
+  }
+
+  .scrollPlaceholder {
+    min-height: 280px;
+  }
+}

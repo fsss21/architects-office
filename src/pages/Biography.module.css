@@ -1,0 +1,155 @@
+.personView {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1.5rem;
+  min-height: 0;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.personTitle {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #3d3529;
+  margin: 0;
+  position: fixed;
+  top: 5%;
+  left: 27%;
+}
+
+.personContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 800px;
+  position: relative;
+}
+
+.personText {
+  font-family: var(--font-text);
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  padding: 15px;
+  font-size: 22px;
+  line-height: 1.7;
+  color: #4a4035;
+  max-width: 720px;
+  min-height: 350px;
+  margin: 0;
+}
+
+.personPhotoWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  width: 100%;
+  max-width: 650px;
+  position: absolute;
+  bottom: 0;
+  left: 23%;
+}
+
+.personPhoto {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #8b7355;
+}
+
+.photoNavBtns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.photoNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 35%;
+  width: 600px;
+}
+
+.photoNavBtn {
+  font-family: var(--font-title);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #fff;
+  background: #554935;
+  border: 1px solid #8b7355;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.photoNavFull {
+  font-family: var(--font-title);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #554935;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.photoNavBtn:hover {
+  background: rgba(139, 115, 85, 0.4);
+  color: #3d3529;
+}
+
+.photoNavCounter {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a4035;
+  min-width: 4ch;
+  text-align: center;
+}
+
+.fullscreenOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+}
+
+.fullscreenImage {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .personPhotoWrap {
+    min-height: 220px;
+  }
+}

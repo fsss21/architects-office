@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Anticva';
+  src: url('/fonts/Anticva-Regular.woff2') format('woff2'),
+       url('/fonts/Anticva-Regular.woff') format('woff'),
+       url('/fonts/Anticva-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --font-text: 'Raleway', sans-serif;
+    --font-title: 'Anticva', Georgia, serif;
+  }
+  
+  body {
+    font-family: var(--font-text);
+  }
+

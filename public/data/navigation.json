@@ -1,0 +1,46 @@
+{
+  "topCategories": [
+    {
+      "id": "personalities",
+      "label": "ЛИЧНОСТИ И ТВОРЧЕСКИЕ МЕТОДЫ НА ЛЬВОВА  И <br/> ДЖ. КВАРЕНГИ",
+      "path": "/"
+    },
+    {
+      "id": "classicism",
+      "label": "АРХИТЕКТУРНОЕ <br/> ТВОРЧЕСТВО ЭПОХИ <br/> КЛАССИЦИЗМА В РОССИИ",
+      "path": "/classicism"
+    },
+    {
+      "id": "palladian",
+      "label": "ПРИНЦИПЫ ПАЛЛАДИАНСКОГО СТИЛЯ И ИХ РУССКАЯ ИНТЕРПРЕТАЦИЯ",
+      "path": "/palladian"
+    },
+    {
+      "id": "adaptations",
+      "label": "КЛИМАТИЧЕСКИЕ И ФУНКЦИОНАЛЬНЫЕ АДАПТАЦИИ КЛАССИЧЕСКОЙ АРХИТЕКТУРЫ",
+      "path": "/adaptations"
+    }
+  ],
+  "sidebarItems": [
+    {
+      "id": "lvov",
+      "label": "НИКОЛАЙ АЛЕКСАНДРОВИЧ <br/> ЛЬВОВ",
+      "path": "/"
+    },
+    {
+      "id": "palladio",
+      "label": "АНДРЕА ПАЛЛАДИО",
+      "path": "/palladio"
+    },
+    {
+      "id": "quarenghi",
+      "label": "ДЖАКОМО КВАРЕНГИ",
+      "path": "/quarenghi"
+    },
+    {
+      "id": "principles",
+      "label": "АРХИТЕКТУРНЫЕ ПРИНЦИПЫ <br/> И СРАВНЕНИЯ",
+      "path": "/principles"
+    }
+  ]
+}

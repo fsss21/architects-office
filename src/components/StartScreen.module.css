@@ -1,0 +1,17 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  background-color: #1a1510;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 0.3s ease-out;
+}
+
+
