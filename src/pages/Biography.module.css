@@ -9,15 +9,44 @@
   max-width: 1400px;
 }
 
+.personTitleBlock{
+  position: fixed;
+  top: 3%;
+  left: 27%;
+}
+
 .personTitle {
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: normal;
   color: #3d3529;
   margin: 0;
-  position: fixed;
-  top: 5%;
-  left: 27%;
+  text-transform: uppercase;
+  
+}
+
+.personYears {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: #6b5344;
+  margin: 0;
+  
+}
+
+.personTextBlock {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  max-width: 1200px;
+  min-height: 300px;
+}
+
+.personMainWorks {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a4035;
+  margin: 1rem 0 0;
 }
 
 .personContainer{
@@ -28,36 +57,35 @@
   position: relative;
 }
 
+
 .personText {
   font-family: var(--font-text);
-  display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  padding: 15px;
   font-size: 22px;
   line-height: 1.7;
   color: #4a4035;
-  max-width: 720px;
-  min-height: 350px;
   margin: 0;
+  padding: 15px 0 0;
+  position: relative;
 }
 
 .personPhotoWrap {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 280px;
   width: 100%;
-  max-width: 650px;
+  max-width: 520px;
+  height: min(50vh, 440px);
+  min-height: 250px;
   position: absolute;
   bottom: 0;
-  left: 23%;
+  left: 24%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .personPhoto {
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

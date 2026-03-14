@@ -3,13 +3,14 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import styles from './AppLayout.module.css'
 
 const NAVIGATION_URL = '/data/navigation.json'
-const PERSON_IDS = ['lvov', 'palladio', 'quarenghi']
+const SIDEBAR_PAGE_SIZE = 4
 
 function AppLayout() {
   const location = useLocation()
   const navigate = useNavigate()
   const [topCategories, setTopCategories] = useState([])
   const [sidebarItems, setSidebarItems] = useState([])
+  const [sidebarPage, setSidebarPage] = useState(0)
   const [selectedHeaderId, setSelectedHeaderId] = useState('personalities')
 
   useEffect(() => {
@@ -33,12 +34,17 @@ function AppLayout() {
 
   const isSidebarActive = (item) => {
     if (item.id === 'principles') return location.pathname === '/principles'
-    if (PERSON_IDS.includes(item.id)) {
-      const match = location.pathname.match(/^\/biography\/(\w+)$/)
-      return match && match[1] === item.id
-    }
-    return false
+    const match = location.pathname.match(/^\/biography\/([\w-]+)$/)
+    return match ? match[1] === item.id : false
   }
+
+  const sidebarPages = Math.max(1, Math.ceil((sidebarItems.length || 0) / SIDEBAR_PAGE_SIZE))
+  const visibleSidebarItems = sidebarItems.slice(
+    sidebarPage * SIDEBAR_PAGE_SIZE,
+    sidebarPage * SIDEBAR_PAGE_SIZE + SIDEBAR_PAGE_SIZE
+  )
+  const canSidebarPrev = sidebarPage > 0
+  const canSidebarNext = sidebarPage < sidebarPages - 1
 
   const handleBack = () => {
     if (location.pathname.startsWith('/biography') || location.pathname === '/principles') {
@@ -75,34 +81,49 @@ function AppLayout() {
         {!isPrinciples && (
           <aside className={styles.sidebar}>
             <div className={styles.sidebarInner}>
+              {sidebarPages > 1 && (
+                <button
+                  type="button"
+                  className={styles.sidebarNavBtn}
+                  onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
+                  disabled={!canSidebarPrev}
+                  aria-label="Предыдущие пункты"
+                >
+                  ‹
+                </button>
+              )}
               <div className={styles.sidebarGroup}>
-                {sidebarItems
-                  .filter((item) => PERSON_IDS.includes(item.id))
-                  .map((item) => (
-                    <Link
-                      key={item.id}
-                      to={`/biography/${item.id}`}
-                      reloadDocument={false}
-                      className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
-                      dangerouslySetInnerHTML={{ __html: item.label }}
-                    >
-                    </Link>
-                  ))}
-              </div>
-              <div className={styles.sidebarGroup}>
-                {sidebarItems
-                  .filter((item) => item.id === 'principles')
-                  .map((item) => (
+                {visibleSidebarItems.map((item) =>
+                  item.id === 'principles' ? (
                     <Link
                       key={item.id}
                       to="/principles"
                       reloadDocument={false}
                       className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
                       dangerouslySetInnerHTML={{ __html: item.label }}
-                    >
-                    </Link>
-                  ))}
+                    />
+                  ) : (
+                    <Link
+                      key={item.id}
+                      to={`/biography/${item.id}`}
+                      reloadDocument={false}
+                      className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
+                      dangerouslySetInnerHTML={{ __html: item.label }}
+                    />
+                  )
+                )}
               </div>
+              {sidebarPages > 1 && (
+                <button
+                  type="button"
+                  className={styles.sidebarNavBtn}
+                  onClick={() => setSidebarPage((p) => Math.min(sidebarPages - 1, p + 1))}
+                  disabled={!canSidebarNext}
+                  aria-label="Следующие пункты"
+                >
+                  ›
+                </button>
+              )}
             </div>
           </aside>
         )}

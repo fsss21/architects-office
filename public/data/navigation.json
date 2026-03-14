@@ -2,7 +2,7 @@
   "topCategories": [
     {
       "id": "personalities",
-      "label": "ЛИЧНОСТИ И ТВОРЧЕСКИЕ МЕТОДЫ НА ЛЬВОВА  И <br/> ДЖ. КВАРЕНГИ",
+      "label": "ЛИЧНОСТИ И ТВОРЧЕСКИЕ МЕТОДЫ Н.А. ЛЬВОВА  И <br/> ДЖ. КВАРЕНГИ",
       "path": "/"
     },
     {
@@ -22,25 +22,14 @@
     }
   ],
   "sidebarItems": [
-    {
-      "id": "lvov",
-      "label": "НИКОЛАЙ АЛЕКСАНДРОВИЧ <br/> ЛЬВОВ",
-      "path": "/"
-    },
-    {
-      "id": "palladio",
-      "label": "АНДРЕА ПАЛЛАДИО",
-      "path": "/palladio"
-    },
-    {
-      "id": "quarenghi",
-      "label": "ДЖАКОМО КВАРЕНГИ",
-      "path": "/quarenghi"
-    },
-    {
-      "id": "principles",
-      "label": "АРХИТЕКТУРНЫЕ ПРИНЦИПЫ <br/> И СРАВНЕНИЯ",
-      "path": "/principles"
-    }
+    { "id": "lvov", "label": "НИКОЛАЙ АЛЕКСАНДРОВИЧ <br/> ЛЬВОВ", "path": "/biography/lvov" },
+    { "id": "quarenghi", "label": "ДЖАКОМО КВАРЕНГИ", "path": "/biography/quarenghi" },
+    { "id": "wallen-delamot", "label": "Ж.-Б. ВАЛЛЕН-ДЕЛАМОТ", "path": "/biography/wallen-delamot" },
+    { "id": "felten", "label": "Ю. М. ФЕЛЬТЕН", "path": "/biography/felten" },
+    { "id": "starov", "label": "И. Е. СТАРОВ", "path": "/biography/starov" },
+    { "id": "cameron", "label": "ЧАРЛЬЗ КАМЕРОН", "path": "/biography/cameron" },
+    { "id": "kazakov", "label": "М. Ф. КАЗАКОВ", "path": "/biography/kazakov" },
+    { "id": "bazhenov", "label": "В. И. БАЖЕНОВ", "path": "/biography/bazhenov" },
+    { "id": "principles", "label": "АРХИТЕКТУРНЫЕ ПРИНЦИПЫ <br/> И СРАВНЕНИЯ", "path": "/principles" }
   ]
 }

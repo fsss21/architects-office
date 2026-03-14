@@ -88,10 +88,39 @@
 .sidebarInner {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   flex: 1;
+  min-height: 0;
   background: none;
   border-radius: 6px;
+  gap: 0.5rem;
+}
+
+.sidebarNavBtn {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 270px;
+  height: 36px;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3D2611;
+  background: rgba(139, 115, 85, 0.2);
+  border: 1px solid #8b7355;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  font-family: var(--font-title);
+}
+
+.sidebarNavBtn:hover:not(:disabled) {
+  background: rgba(139, 115, 85, 0.35);
+}
+
+.sidebarNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .sidebarGroup {
@@ -99,6 +128,10 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  max-height: calc(4 * (100px + 0.5rem));
 }
 
 .sidebarBtn {
@@ -114,8 +147,8 @@
   font-weight: 600;
   color: #3D2611;
   background: none;
-
-  border-radius: 4px;
+  border-radius: 2px;
+  border: 2px solid #5F5244;
   cursor: pointer;
   transition: background 0.2s;
   text-decoration: none;
