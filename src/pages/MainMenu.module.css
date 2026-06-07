@@ -37,17 +37,19 @@
 .textColumn {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   flex: 1;
-  padding: 10px; 
+  padding: 10px 10px 10px 1.25rem;
   width: 100%;
   max-width: 500px;
   min-height: 500px;
+  border-left: 2px solid rgba(139, 115, 85, 0.65);
 }
 
 .blockText{
   width: 100%;
   max-width: 500px;
+  padding-top: 8%;
 }
 
 .textColumn p {
@@ -333,5 +335,146 @@
 
   .scrollPlaceholder {
     min-height: 280px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .title {
+    font-size: 28px;
+    width: 560px;
+    top: 6%;
+  }
+
+  .columns {
+    max-width: 2000px;
+  }
+
+  .textColumn {
+    max-width: 700px;
+    min-height: 720px;
+    padding: 18px 18px 18px 1.5rem;
+  }
+
+  .blockText {
+    max-width: 700px;
+    margin-left: 5%;
+  }
+
+  .textColumn p {
+    font-size: 1.33rem;
+  }
+
+  .scrollColumn {
+    width: 520px;
+ 
+  }
+
+  .photoContainer {
+    min-height: 520px;
+  }
+
+  .photoImage {
+    max-height: 650px;
+  }
+
+  .scrollNav {
+    width: 520px;
+    right: 8%;
+    font-size: 1.2rem;
+  }
+
+  .scrollNavBtn button {
+    width: 57px;
+    height: 57px;
+  }
+
+  .scrollNavText {
+    font-size: 1.2rem;
+  }
+
+  .scrollNavText button {
+    width: 37px;
+    height: 37px;
+  }
+
+  .photoFullscreenClose {
+    font-size: 3rem;
+    width: 72px;
+    height: 72px;
+  }
+
+  .photoFullscreenNav button {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 3840px) {
+  .title {
+    font-size: 3rem;
+    width: 720px;
+    top: 5%;
+  }
+
+  .columns {
+    max-width: 3000px;
+  }
+
+  .textColumn {
+    max-width: 1040px;
+    min-height: 1200px;
+    padding: 22px 22px 22px 1.75rem;
+  }
+
+  .blockText {
+    max-width: 1040px;
+  }
+
+  .textColumn p {
+    font-size: 2rem;
+  }
+
+  .scrollColumn {
+    width: 720px;
+    margin-right: 10%;
+  }
+
+  .photoContainer {
+    min-height: 780px;
+  }
+
+  .photoImage {
+    max-height: 980px;
+  }
+
+  .scrollNav {
+    width: 720px;
+    right: 6%;
+    font-size: 1.8rem;
+  }
+
+  .scrollNavBtn button {
+    width: 86px;
+    height: 86px;
+  }
+
+  .scrollNavText {
+    font-size: 1.8rem;
+  }
+
+  .scrollNavText button {
+    width: 56px;
+    height: 56px;
+  }
+
+  .photoFullscreenClose {
+    font-size: 4rem;
+    width: 104px;
+    height: 104px;
+  }
+
+  .photoFullscreenNav button {
+    width: 72px;
+    height: 72px;
   }
 }

@@ -36,7 +36,7 @@
 .personTextBlock {
   position: absolute;
   top: 10%;
-  left: 5%;
+  left: 6%;
   max-width: 1200px;
   min-height: 300px;
 }
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 800px;
+  min-height: 900px;
   position: relative;
 }
 
@@ -77,7 +77,7 @@
   height: min(50vh, 440px);
   min-height: 250px;
   position: absolute;
-  bottom: 0;
+  bottom: 6%;
   left: 24%;
   overflow: hidden;
   box-sizing: border-box;
@@ -107,7 +107,7 @@
   gap: 14px;
   position: absolute;
   bottom: 0;
-  left: 35%;
+  left: 38%;
   width: 600px;
 }
 
@@ -179,5 +179,106 @@
 @media (max-width: 700px) {
   .personPhotoWrap {
     min-height: 220px;
+  }
+}
+
+/* ========== Adaptive: 2K (2560px+) ========== */
+@media (min-width: 2560px) {
+  .personView {
+    max-width: 1860px;
+  }
+
+  .personTitle {
+    font-size: 2rem;
+  }
+
+  .personYears {
+    font-size: 1.6rem;
+  }
+
+  .personTextBlock {
+    max-width: 1600px;
+  }
+
+  .personText {
+    font-size: 29px;
+  }
+
+  .personMainWorks {
+    font-size: 1.33rem;
+  }
+
+  .personContainer {
+    min-height: 1200px;
+  }
+
+  .personPhotoWrap {
+    max-width: 692px;
+    height: min(50vh, 585px);
+  }
+
+  .photoNav {
+    width: 800px;
+    left: 38%;
+  }
+
+  .photoNavBtn,
+  .photoNavFull {
+    width: 53px;
+    height: 53px;
+  }
+
+  .photoNavCounter {
+    font-size: 1.33rem;
+  }
+}
+
+/* ========== Adaptive: 4K (3840px+) ========== */
+@media (min-width: 3840px) {
+  .personView {
+    max-width: 2800px;
+  }
+
+  .personTitle {
+    font-size: 3rem;
+  }
+
+  .personYears {
+    font-size: 2.4rem;
+  }
+
+  .personTextBlock {
+    max-width: 2400px;
+  }
+
+  .personText {
+    font-size: 44px;
+  }
+
+  .personMainWorks {
+    font-size: 2rem;
+  }
+
+  .personContainer {
+    min-height: 1800px;
+  }
+
+  .personPhotoWrap {
+    max-width: 1040px;
+    height: min(50vh, 880px);
+  }
+
+  .photoNav {
+    width: 1200px;
+  }
+
+  .photoNavBtn,
+  .photoNavFull {
+    width: 80px;
+    height: 80px;
+  }
+
+  .photoNavCounter {
+    font-size: 2rem;
   }
 }

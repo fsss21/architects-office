@@ -68,3 +68,43 @@
     font-size: 2rem;
   }
 }
+
+/* ========== Adaptive: 2K (2560px+) ========== */
+@media (min-width: 2560px) {
+  .about h1 {
+    font-size: 3.3rem;
+  }
+
+  .aboutContent h2 {
+    font-size: 2.3rem;
+  }
+
+  .aboutContent p,
+  .aboutContent li {
+    font-size: 1.45rem;
+  }
+
+  .aboutContent section {
+    padding: 2.65rem;
+  }
+}
+
+/* ========== Adaptive: 4K (3840px+) ========== */
+@media (min-width: 3840px) {
+  .about h1 {
+    font-size: 5rem;
+  }
+
+  .aboutContent h2 {
+    font-size: 3.5rem;
+  }
+
+  .aboutContent p,
+  .aboutContent li {
+    font-size: 2.2rem;
+  }
+
+  .aboutContent section {
+    padding: 4rem;
+  }
+}

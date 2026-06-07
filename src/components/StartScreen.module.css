@@ -14,4 +14,16 @@
   transition: opacity 0.3s ease-out;
 }
 
+/* ========== Adaptive: 2K (2560px+) ========== */
+@media (min-width: 2560px) {
+  .screen {
+    padding: 2.65rem;
+  }
+}
 
+/* ========== Adaptive: 4K (3840px+) ========== */
+@media (min-width: 3840px) {
+  .screen {
+    padding: 4rem;
+  }
+}

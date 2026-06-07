@@ -94,3 +94,59 @@
     );
   }
 }
+
+/* ========== Adaptive: 2K (2560px+) ========== */
+@media (min-width: 2560px) {
+  .principlesView {
+    padding: 2.65rem;
+  }
+
+  .principlesTitle {
+    font-size: 2.65rem;
+  }
+
+  .principlesBlock {
+    max-width: 1200px;
+    min-height: 730px;
+  }
+
+  .principlesColumn {
+    padding: 2rem 2.65rem;
+  }
+
+  .principlesColumnTitle {
+    font-size: 1.45rem;
+  }
+
+  .principlesText {
+    font-size: 1.33rem;
+  }
+}
+
+/* ========== Adaptive: 4K (3840px+) ========== */
+@media (min-width: 3840px) {
+  .principlesView {
+    padding: 4rem;
+  }
+
+  .principlesTitle {
+    font-size: 4rem;
+  }
+
+  .principlesBlock {
+    max-width: 1800px;
+    min-height: 1100px;
+  }
+
+  .principlesColumn {
+    padding: 3rem 4rem;
+  }
+
+  .principlesColumnTitle {
+    font-size: 2.2rem;
+  }
+
+  .principlesText {
+    font-size: 2rem;
+  }
+}

@@ -5,7 +5,7 @@ import styles from './AppLayout.module.css'
 const NAVIGATION_URL = '/data/navigation.json'
 const SIDEBAR_PAGE_SIZE = 4
 
-function AppLayout() {
+function AppLayout({ onBackToStart }) {
   const location = useLocation()
   const navigate = useNavigate()
   const [topCategories, setTopCategories] = useState([])
@@ -38,8 +38,10 @@ function AppLayout() {
     return match ? match[1] === item.id : false
   }
 
-  const sidebarPages = Math.max(1, Math.ceil((sidebarItems.length || 0) / SIDEBAR_PAGE_SIZE))
-  const visibleSidebarItems = sidebarItems.slice(
+  const principlesItem = sidebarItems.find((item) => item.id === 'principles')
+  const biographyItems = sidebarItems.filter((item) => item.id !== 'principles')
+  const sidebarPages = Math.max(1, Math.ceil((biographyItems.length || 0) / SIDEBAR_PAGE_SIZE))
+  const visibleSidebarItems = biographyItems.slice(
     sidebarPage * SIDEBAR_PAGE_SIZE,
     sidebarPage * SIDEBAR_PAGE_SIZE + SIDEBAR_PAGE_SIZE
   )
@@ -47,7 +49,9 @@ function AppLayout() {
   const canSidebarNext = sidebarPage < sidebarPages - 1
 
   const handleBack = () => {
-    if (location.pathname.startsWith('/biography') || location.pathname === '/principles') {
+    if (location.pathname === '/') {
+      onBackToStart?.()
+    } else if (location.pathname.startsWith('/biography') || location.pathname === '/principles') {
       navigate('/')
     } else if (location.pathname !== '/') {
       window.history.back()
@@ -93,25 +97,15 @@ function AppLayout() {
                 </button>
               )}
               <div className={styles.sidebarGroup}>
-                {visibleSidebarItems.map((item) =>
-                  item.id === 'principles' ? (
-                    <Link
-                      key={item.id}
-                      to="/principles"
-                      reloadDocument={false}
-                      className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
-                      dangerouslySetInnerHTML={{ __html: item.label }}
-                    />
-                  ) : (
-                    <Link
-                      key={item.id}
-                      to={`/biography/${item.id}`}
-                      reloadDocument={false}
-                      className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
-                      dangerouslySetInnerHTML={{ __html: item.label }}
-                    />
-                  )
-                )}
+                {visibleSidebarItems.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={`/biography/${item.id}`}
+                    reloadDocument={false}
+                    className={`${styles.sidebarBtn} ${isSidebarActive(item) ? styles.sidebarBtnActive : ''}`}
+                    dangerouslySetInnerHTML={{ __html: item.label }}
+                  />
+                ))}
               </div>
               {sidebarPages > 1 && (
                 <button
@@ -123,6 +117,14 @@ function AppLayout() {
                 >
                   ›
                 </button>
+              )}
+              {principlesItem && (
+                <Link
+                  to="/principles"
+                  reloadDocument={false}
+                  className={`${styles.sidebarBtn} ${styles.sidebarPrinciplesBtn} ${isSidebarActive(principlesItem) ? styles.sidebarBtnActive : ''}`}
+                  dangerouslySetInnerHTML={{ __html: principlesItem.label }}
+                />
               )}
             </div>
           </aside>

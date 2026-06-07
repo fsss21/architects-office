@@ -17,7 +17,7 @@ function App() {
       )}
       {!showStartScreen && (
         <Routes>
-          <Route path="/" element={<AppLayout />}>
+          <Route path="/" element={<AppLayout onBackToStart={() => setShowStartScreen(true)} />}>
             <Route index element={<MainMenu />} />
             <Route path="biography/:personId" element={<Biography />} />
             <Route path="principles" element={<Principles />} />
