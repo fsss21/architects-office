@@ -70,12 +70,12 @@
 
 .personPhotoWrap {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 520px;
-  height: min(50vh, 440px);
-  min-height: 250px;
+  height: 440px;
   position: absolute;
   bottom: 6%;
   left: 24%;
@@ -83,9 +83,18 @@
   box-sizing: border-box;
 }
 
+.personPhotoSlot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
 .personPhoto {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -143,9 +152,14 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.photoNavBtn:hover {
+.photoNavBtn:hover:not(:disabled) {
   background: rgba(139, 115, 85, 0.4);
   color: #3d3529;
+}
+
+.photoNavBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .photoNavCounter {
@@ -174,6 +188,126 @@
   object-fit: contain;
   border-radius: 8px;
   pointer-events: none;
+}
+
+.mainWorksSection {
+  position: absolute;
+  text-align: center;
+  max-width: 1200px;
+  top: 25%;
+  left: 6%;
+  right: 6%;
+  z-index: 2;
+}
+
+.mainWorksTitle {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #3d3529;
+  margin: 0 0 0.75rem;
+}
+
+.workButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.workButtonsRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.workBtn {
+  font-family: var(--font-title);
+  flex: 0 0 calc((100% - 1rem) / 3);
+  width: calc((100% - 1rem) / 3);
+  max-width: calc((100% - 1rem) / 3);
+  min-height: 52px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: #3d3529;
+  background: rgba(232, 223, 208, 0.55);
+  border: 2px solid #8b7355;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-sizing: border-box;
+}
+
+.workBtn:hover {
+  background: rgba(139, 115, 85, 0.2);
+}
+
+.workBtnActive {
+  background: rgba(139, 115, 85, 0.55);
+  color: #f5f0e6;
+  border-color: #6b5344;
+}
+
+.scrollWrap {
+  position: absolute;
+  bottom: 8%;
+  left: 24%;
+  width: 100%;
+  max-width: 640px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.scrollTitle {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3d3529;
+  margin: 0;
+  text-align: center;
+  flex-shrink: 0;
+  min-height: 1.6em;
+  line-height: 1.3;
+}
+
+.scrollImageFrame {
+  width: 100%;
+  height: 320px;
+  flex-shrink: 0;
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: linear-gradient(
+    to bottom,
+    #e8dfd0 0%,
+    #f5f0e6 8%,
+    #f5f0e6 92%,
+    #e8dfd0 100%
+  );
+  border: 2px solid #8b7355;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(61, 38, 17, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.scrollImage {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 @media (max-width: 700px) {
@@ -214,7 +348,7 @@
 
   .personPhotoWrap {
     max-width: 692px;
-    height: min(50vh, 585px);
+    height: 585px;
   }
 
   .photoNav {
@@ -230,6 +364,31 @@
 
   .photoNavCounter {
     font-size: 1.33rem;
+  }
+
+  .mainWorksTitle {
+    font-size: 1.45rem;
+  }
+
+  .workBtn {
+    font-size: 1rem;
+    min-height: 68px;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .scrollWrap {
+    max-width: 850px;
+    height: 520px;
+  }
+
+  .scrollTitle {
+    font-size: 1.65rem;
+    min-height: 1.6em;
+  }
+
+  .scrollImageFrame {
+    height: 425px;
+    padding: 1.65rem 2rem 2rem;
   }
 }
 
@@ -265,7 +424,7 @@
 
   .personPhotoWrap {
     max-width: 1040px;
-    height: min(50vh, 880px);
+    height: 880px;
   }
 
   .photoNav {
@@ -280,5 +439,30 @@
 
   .photoNavCounter {
     font-size: 2rem;
+  }
+
+  .mainWorksTitle {
+    font-size: 2.2rem;
+  }
+
+  .workBtn {
+    font-size: 1.5rem;
+    min-height: 100px;
+    padding: 1rem 1.25rem;
+  }
+
+  .scrollWrap {
+    max-width: 1280px;
+    height: 780px;
+  }
+
+  .scrollTitle {
+    font-size: 2.5rem;
+    min-height: 1.6em;
+  }
+
+  .scrollImageFrame {
+    height: 640px;
+    padding: 2.5rem 3rem 3rem;
   }
 }
