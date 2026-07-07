@@ -65,12 +65,12 @@
 }
 
 .scrollColumn {
-  width: 400px;
+  width: 500px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 22%;
+  margin-right: 18%;
 }
 
 .scrollPlaceholder {
@@ -88,59 +88,32 @@
 
 .photoContainer {
   width: 100%;
-  min-height: 360px;
-  border-radius: 8px;
-  border: 2px solid #8b7355;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.photoImageFrame {
+  width: 100%;
+  height: 500px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  position: relative;
-  background: rgba(232, 223, 208, 0.3);
+  background: none;
+  box-sizing: border-box;
 }
 
 .photoImage {
   width: 100%;
-  height: auto;
-  max-height: 400px;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   display: block;
-}
-
-.photoNav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #3d3529;
-}
-
-.photoNav button {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #3d3529;
-  background: transparent;
-  border: 1px solid #8b7355;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.photoNav button:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.photoNav button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .scrollNavText{
@@ -210,6 +183,15 @@
   border-radius: 4px;
   cursor: pointer;
   transition: opacity 0.2s;
+}
+
+.scrollNavBtn button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.scrollNavBtn button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .scrollNav button:hover {
@@ -369,12 +351,8 @@
  
   }
 
-  .photoContainer {
-    min-height: 520px;
-  }
-
-  .photoImage {
-    max-height: 650px;
+  .photoImageFrame {
+    height: 520px;
   }
 
   .scrollNav {
@@ -439,12 +417,8 @@
     margin-right: 10%;
   }
 
-  .photoContainer {
-    min-height: 780px;
-  }
-
-  .photoImage {
-    max-height: 980px;
+  .photoImageFrame {
+    height: 780px;
   }
 
   .scrollNav {

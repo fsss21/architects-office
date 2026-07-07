@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import styles from './MainMenu.module.css'
 
@@ -18,7 +18,6 @@ function MainMenu() {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
     const [isPhotoFullscreen, setIsPhotoFullscreen] = useState(false)
     const [contentPage, setContentPage] = useState(1)
-    const photoContainerRef = useRef(null)
 
     useEffect(() => {
         fetch(CONTENT_URL)
@@ -32,7 +31,9 @@ function MainMenu() {
 
     const pageData = headerContent[selectedHeaderId] ?? {}
     const { title, paragraphs = [], pagination = {}, scrollLabel = 'Изображение / свиток', images: imagesFromData = [] } = pageData
-    const contentTotalPages = Math.max(1, pagination.totalPages ?? 3)
+    const contentTotalPages = Math.max(1, paragraphs.length || pagination.totalPages || 1)
+    const safeContentPage = Math.min(contentPage, contentTotalPages)
+    const currentParagraph = paragraphs[safeContentPage - 1]
 
     const photoList = imagesFromData.length
         ? imagesFromData.map((path) => PHOTO_ASSET_MAP[path] ?? (path.startsWith('http') || path.startsWith('/') ? path : `/${path}`))
@@ -43,6 +44,12 @@ function MainMenu() {
         setCurrentPhotoIndex(0)
         setContentPage(1)
     }, [selectedHeaderId])
+
+    useEffect(() => {
+        if (contentPage > contentTotalPages) {
+            setContentPage(contentTotalPages)
+        }
+    }, [contentPage, contentTotalPages])
 
     const handlePagePrev = () => setContentPage((p) => Math.max(1, p - 1))
     const handlePageNext = () => setContentPage((p) => Math.min(contentTotalPages, p + 1))
@@ -78,57 +85,33 @@ function MainMenu() {
                 <div className={styles.textColumn}>
                     <h1 className={styles.title}>{title}</h1>
                     <div className={styles.blockText}>
-                        {paragraphs.map((text, i) => (
-                            <p key={i}>{text}</p>
-                        ))}
+                        {currentParagraph && <p>{currentParagraph}</p>}
                     </div>
                     <div className={styles.scrollNavText}>
-                        <span>{contentPage}/{contentTotalPages}</span>
+                        <span>{safeContentPage}/{contentTotalPages}</span>
                         <div className={styles.buttonsNav}>
-                            <button type="button" aria-label="Назад" onClick={handlePagePrev} disabled={contentPage <= 1}><ArrowBackIosNewIcon fontSize='large' /></button>
-                            <button type="button" aria-label="Вперёд" onClick={handlePageNext} disabled={contentPage >= contentTotalPages}><ArrowForwardIosIcon fontSize='large' /></button>
+                            <button type="button" aria-label="Назад" onClick={handlePagePrev} disabled={safeContentPage <= 1}><ArrowBackIosNewIcon fontSize='large' /></button>
+                            <button type="button" aria-label="Вперёд" onClick={handlePageNext} disabled={safeContentPage >= contentTotalPages}><ArrowForwardIosIcon fontSize='large' /></button>
                         </div>
                     </div>
                 </div>
                 <div className={styles.scrollColumn}>
-                    <div
-                        ref={photoContainerRef}
-                        className={styles.photoContainer}
-                    >
-                        <img
-                            src={currentPhotoSrc}
-                            alt={scrollLabel}
-                            className={styles.photoImage}
-                        />
-                        {photoList.length > 1 && (
-                            <div className={styles.photoNav}>
-                                <button
-                                    type="button"
-                                    aria-label="Предыдущее фото"
-                                    onClick={handlePhotoPrev}
-                                    disabled={currentPhotoIndex <= 0}
-                                >
-                                    <ArrowBackIosNewIcon fontSize='large' />
-                                </button>
-                                <span>{currentPhotoIndex + 1}/{photoList.length}</span>
-                                <button
-                                    type="button"
-                                    aria-label="Следующее фото"
-                                    onClick={handlePhotoNext}
-                                    disabled={currentPhotoIndex >= photoList.length - 1}
-                                >
-                                    <ArrowForwardIosIcon fontSize='large' />
-                                </button>
-                            </div>
-                        )}
+                    <div className={styles.photoContainer}>
+                        <div className={styles.photoImageFrame}>
+                            <img
+                                src={currentPhotoSrc}
+                                alt={scrollLabel}
+                                className={styles.photoImage}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
             <div className={styles.scrollNav}>
                 <div className={styles.scrollNavBtn}>
-                    <button type="button" aria-label="Назад" onClick={handlePagePrev} disabled={contentPage <= 1}><ArrowBackIosNewIcon fontSize='large' /></button>
-                    <span>{contentPage}/{contentTotalPages}</span>
-                    <button type="button" aria-label="Вперёд" onClick={handlePageNext} disabled={contentPage >= contentTotalPages}><ArrowForwardIosIcon fontSize='large' /></button>
+                    <button type="button" aria-label="Предыдущее фото" onClick={handlePhotoPrev} disabled={currentPhotoIndex <= 0 || photoList.length <= 1}><ArrowBackIosNewIcon fontSize='large' /></button>
+                    <span>{currentPhotoIndex + 1}/{photoList.length}</span>
+                    <button type="button" aria-label="Следующее фото" onClick={handlePhotoNext} disabled={currentPhotoIndex >= photoList.length - 1 || photoList.length <= 1}><ArrowForwardIosIcon fontSize='large' /></button>
                 </div>
                 <button
                     type="button"
